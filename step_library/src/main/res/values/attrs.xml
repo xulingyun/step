@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HorizontalStepsViewIndicator">
+
+        <attr name="unCompleteTextColor" format="color|reference"/>
+        <attr name="completedTextColor" format="color|reference"/>
+        <attr name="completeingTextColor" format="color|reference"/>
+
+        <attr name="unCompleteTextSize" format="dimension|reference"/>
+        <attr name="completedTextSize" format="dimension|reference"/>
+        <attr name="completeingTextSize" format="dimension|reference"/>
+
+        <attr name="unCompleteTextBlod" format="boolean|reference"/>
+        <attr name="completedTextBlod" format="boolean|reference"/>
+        <attr name="completeingTextBlod" format="boolean|reference"/>
+
+        <attr name="unCompleteIcon" format="color|reference"/>
+        <attr name="completedTextIcon" format="color|reference"/>
+        <attr name="completeingTextIcon" format="color|reference"/>
+
+        <attr name="unCompleteLineColor" format="color|reference"/>
+        <attr name="completedLineColor" format="color|reference"/>
+
+        <attr name="unCompleteLineHeight" format="dimension|reference"/>
+        <attr name="completedLineHeight" format="dimension|reference"/>
+
+        <attr name="unCompleteLineKind">
+            <enum name="straightLine" value="1"/>
+            <enum name="dottedLine" value="2"/>
+        </attr>
+        <attr name="completedLineKind">
+            <enum name="straightLine" value="1"/>
+            <enum name="dottedLine" value="2"/>
+        </attr>
+        <attr name="leftGap" format="dimension|reference"/>
+        <attr name="topGap" format="dimension|reference"/>
+        <attr name="circleRadius" format="dimension|reference"/>
+        <attr name="lineLength" format="dimension|reference"/>
+        <attr name="iconAndTextGap" format="dimension|reference"/>
+
+
+    </declare-styleable>
+</resources>
