@@ -83,8 +83,8 @@ public class HorizontalStepsViewIndicator extends StepsViewIndicator {
             if(i<completeingPosition) {
                 canvas.drawRect(first+mCircleRadius-5,leftTopY,second-mCircleRadius+5,rightBottomY,completedLinePaint);
             }else{
-                mPath.moveTo(first+mCircleRadius,centerY);
-                mPath.lineTo(second-mCircleRadius,centerY);
+                mPath.moveTo(first+mCircleRadius-5,centerY);
+                mPath.lineTo(second-mCircleRadius+5,centerY);
                 canvas.drawPath(mPath,unCompleteLinePaint);
             }
         }

@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -109,8 +108,8 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
             if(i<completeingPosition) {
                 canvas.drawRect(leftTopX,first+mCircleRadius-5,rightBottomX,second-mCircleRadius+5,completedLinePaint);
             }else{
-                mPath.moveTo(centerX,first+mCircleRadius);
-                mPath.lineTo(centerX,second-mCircleRadius);
+                mPath.moveTo(centerX,first+mCircleRadius-5);
+                mPath.lineTo(centerX,second-mCircleRadius+5);
                 canvas.drawPath(mPath,unCompleteLinePaint);
             }
         }

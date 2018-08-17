@@ -128,7 +128,9 @@ public class StepsViewIndicator extends LinearLayout {
         unCompleteLinePaint.setColor(unCompleteLineColor);
         unCompleteLinePaint.setStrokeWidth(unCompleteLineHeight);
         unCompleteLinePaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        unCompleteLinePaint.setPathEffect(new DashPathEffect(new float[]{6, 6, 6, 6}, 1));
+        if(unCompleteLineKind==2) {
+            unCompleteLinePaint.setPathEffect(new DashPathEffect(new float[]{6, 6, 6, 6}, 1));
+        }
 
         completedLinePaint = new Paint();
         completedLinePaint.setAntiAlias(true);
