@@ -137,6 +137,9 @@ public class StepsViewIndicator extends LinearLayout {
         completedLinePaint.setDither(true);
         completedLinePaint.setColor(completedLineColor);
         completedLinePaint.setStrokeWidth(completedLineHeight);
+        if(completedLineKind==2) {
+            completedLinePaint.setPathEffect(new DashPathEffect(new float[]{6, 6, 6, 6}, 1));
+        }
     }
 
     void initAttr(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -197,5 +200,241 @@ public class StepsViewIndicator extends LinearLayout {
             }
         }
         requestLayout();
+    }
+
+    public float getLineLength() {
+        return mLineLength;
+    }
+
+    public void setLineLength(float $LineLength) {
+        mLineLength = $LineLength;
+        requestLayout();
+    }
+
+    public int getUnCompleteTextColor() {
+        return unCompleteTextColor;
+    }
+
+    public void setUnCompleteTextColor(int $UnCompleteTextColor) {
+        unCompleteTextColor = $UnCompleteTextColor;
+        unCompleteTextPaint.setColor(unCompleteTextColor);
+        invalidate();
+    }
+
+    public int getCompletedTextColor() {
+        return completedTextColor;
+    }
+
+    public void setCompletedTextColor(int $CompletedTextColor) {
+        completedTextColor = $CompletedTextColor;
+        completedTextPaint.setColor(completedTextColor);
+        invalidate();
+    }
+
+    public int getCompleteingTextColor() {
+        return completeingTextColor;
+    }
+
+    public void setCompleteingTextColor(int $CompleteingTextColor) {
+        completeingTextColor = $CompleteingTextColor;
+        completeingTextPaint.setColor(completeingTextColor);
+        invalidate();
+    }
+
+    public float getUnCompleteTextSize() {
+        return unCompleteTextSize;
+    }
+
+    public void setUnCompleteTextSize(float $UnCompleteTextSize) {
+        unCompleteTextSize = $UnCompleteTextSize;
+        unCompleteTextPaint.setTextSize(unCompleteTextSize);
+        invalidate();
+    }
+
+    public float getCompletedTextSize() {
+        return completedTextSize;
+    }
+
+    public void setCompletedTextSize(float $CompletedTextSize) {
+        completedTextSize = $CompletedTextSize;
+        completedTextPaint.setTextSize(completedTextSize);
+        invalidate();
+    }
+
+    public float getCompleteingTextSize() {
+        return completeingTextSize;
+    }
+
+    public void setCompleteingTextSize(float $CompleteingTextSize) {
+        completeingTextSize = $CompleteingTextSize;
+        completeingTextPaint.setTextSize(completeingTextSize);
+        invalidate();
+    }
+
+    public boolean isUnCompleteTextBlod() {
+        return unCompleteTextBlod;
+    }
+
+    public void setUnCompleteTextBlod(boolean $UnCompleteTextBlod) {
+        unCompleteTextBlod = $UnCompleteTextBlod;
+        if(unCompleteTextBlod) {
+            unCompleteTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        }
+        invalidate();
+    }
+
+    public boolean isCompletedTextBlod() {
+        return completedTextBlod;
+    }
+
+    public void setCompletedTextBlod(boolean $CompletedTextBlod) {
+        completedTextBlod = $CompletedTextBlod;
+        if(completedTextBlod) {
+            completedTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        }
+        invalidate();
+    }
+
+    public boolean isCompleteingTextBlod() {
+        return completeingTextBlod;
+    }
+
+    public void setCompleteingTextBlod(boolean $CompleteingTextBlod) {
+        completeingTextBlod = $CompleteingTextBlod;
+        if(completeingTextBlod) {
+            completeingTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        }
+        invalidate();
+    }
+
+    public Drawable getUnCompleteIcon() {
+        return unCompleteIcon;
+    }
+
+    public void setUnCompleteIcon(Drawable $UnCompleteIcon) {
+        unCompleteIcon = $UnCompleteIcon;
+        invalidate();
+    }
+
+    public Drawable getCompletedIcon() {
+        return completedIcon;
+    }
+
+    public void setCompletedIcon(Drawable $CompletedIcon) {
+        completedIcon = $CompletedIcon;
+        invalidate();
+    }
+
+    public Drawable getCompleteingIcon() {
+        return completeingIcon;
+    }
+
+    public void setCompleteingIcon(Drawable $CompleteingIcon) {
+        completeingIcon = $CompleteingIcon;
+        invalidate();
+    }
+
+    public int getUnCompleteLineColor() {
+        return unCompleteLineColor;
+    }
+
+    public void setUnCompleteLineColor(int $UnCompleteLineColor) {
+        unCompleteLineColor = $UnCompleteLineColor;
+        unCompleteLinePaint.setColor(unCompleteLineColor);
+        invalidate();
+    }
+
+    public int getCompletedLineColor() {
+        return completedLineColor;
+    }
+
+    public void setCompletedLineColor(int $CompletedLineColor) {
+        completedLineColor = $CompletedLineColor;
+        completedLinePaint.setColor(completedLineColor);
+        invalidate();
+    }
+
+    public float getUnCompleteLineHeight() {
+        return unCompleteLineHeight;
+    }
+
+    public void setUnCompleteLineHeight(float $UnCompleteLineHeight) {
+        unCompleteLineHeight = $UnCompleteLineHeight;
+        unCompleteLinePaint.setStrokeWidth(unCompleteLineHeight);
+        invalidate();
+    }
+
+    public float getCompletedLineHeight() {
+        return completedLineHeight;
+    }
+
+    public void setCompletedLineHeight(float $CompletedLineHeight) {
+        completedLineHeight = $CompletedLineHeight;
+        completedLinePaint.setStrokeWidth(completedLineHeight);
+        invalidate();
+    }
+
+    public int getUnCompleteLineKind() {
+        return unCompleteLineKind;
+    }
+
+    public void setUnCompleteLineKind(int $UnCompleteLineKind) {
+        unCompleteLineKind = $UnCompleteLineKind;
+        if(unCompleteLineKind==2) {
+            unCompleteLinePaint.setPathEffect(new DashPathEffect(new float[]{6, 6, 6, 6}, 1));
+        }
+        invalidate();
+    }
+
+    public int getCompletedLineKind() {
+        return completedLineKind;
+    }
+
+    public void setCompletedLineKind(int $CompletedLineKind) {
+        completedLineKind = $CompletedLineKind;
+        if(completedLineKind==2) {
+            completedLinePaint.setPathEffect(new DashPathEffect(new float[]{6, 6, 6, 6}, 1));
+        }
+        invalidate();
+    }
+
+    public int getLeftGap() {
+        return leftGap;
+    }
+
+    public void setLeftGap(int $LeftGap) {
+        leftGap = $LeftGap;
+        requestLayout();
+        invalidate();
+    }
+
+    public int getTopGap() {
+        return topGap;
+    }
+
+    public void setTopGap(int $TopGap) {
+        topGap = $TopGap;
+        requestLayout();
+        invalidate();
+    }
+
+    public float getCircleRadius() {
+        return mCircleRadius;
+    }
+
+    public void setCircleRadius(float $CircleRadius) {
+        mCircleRadius = $CircleRadius;
+        requestLayout();
+        invalidate();
+    }
+
+    public float getIconAndTextGap() {
+        return iconAndTextGap;
+    }
+
+    public void setIconAndTextGap(float $IconAndTextGap) {
+        iconAndTextGap = $IconAndTextGap;
+        requestLayout();
+        invalidate();
     }
 }

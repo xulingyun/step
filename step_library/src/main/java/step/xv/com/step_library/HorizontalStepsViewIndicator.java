@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 
 /**
  * Created by Cantaloupe--郓 on 2018/8/13.
@@ -36,11 +35,13 @@ public class HorizontalStepsViewIndicator extends StepsViewIndicator {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        //计算总共的宽度，可以通过设置线的长短来设置宽度
         if(MeasureSpec.AT_MOST==widthMode){
             width = (int) (leftGap*2+mCircleRadius*2*mInfoArrayList.size()+mLineLength*(mInfoArrayList.size()-1)+getPaddingLeft()+getPaddingRight());
         }else if(MeasureSpec.EXACTLY==widthMode){
             width = widthSize;
         }
+        //高度一般就是包裹内容
         if(MeasureSpec.UNSPECIFIED!=heightMode){
             if(mInfoArrayList.size()==0){
                 height = (int) (mCircleRadius*2);
@@ -51,23 +52,18 @@ public class HorizontalStepsViewIndicator extends StepsViewIndicator {
                 height = (int) (mCircleRadius*2+lRect.height()+topGap*2+getPaddingTop()+getPaddingBottom()+iconAndTextGap);
             }
         }
-        Log.e("TAG", "onMeasure: "+width+","+height );
-        setMeasuredDimension(width,height);
-    }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
         centerY = mCircleRadius+topGap+getPaddingTop();
         leftTopY = centerY-completedLineHeight/2;
         rightBottomY = centerY+completedLineHeight/2;
         centerPointList.clear();
+        //计算中心点的x坐标
         if (mInfoArrayList!=null){
             float startX = (width-(mCircleRadius*mInfoArrayList.size()*2+mLineLength*(mInfoArrayList.size()-1)+leftGap*2))/2;
             for (int i = 0; i < mInfoArrayList.size(); i++) {
                 centerPointList.add(startX+leftGap+mCircleRadius+i*mCircleRadius*2+i*mLineLength+getPaddingLeft());
             }
         }
+        setMeasuredDimension(width,height);
     }
 
     @Override
@@ -80,14 +76,16 @@ public class HorizontalStepsViewIndicator extends StepsViewIndicator {
         for (int i = 0; i < size - 1; i++) {
             first = centerPointList.get(i);
             second = centerPointList.get(i+1);
+            //完成的画的是矩形，未完成的画的是线（实线或者虚线）
             if(i<completeingPosition) {
                 canvas.drawRect(first+mCircleRadius-5,leftTopY,second-mCircleRadius+5,rightBottomY,completedLinePaint);
             }else{
-                mPath.moveTo(first+mCircleRadius-5,centerY);
-                mPath.lineTo(second-mCircleRadius+5,centerY);
-                canvas.drawPath(mPath,unCompleteLinePaint);
+                    mPath.moveTo(first + mCircleRadius - 5, centerY);
+                    mPath.lineTo(second - mCircleRadius + 5, centerY);
+                    canvas.drawPath(mPath, unCompleteLinePaint);
             }
         }
+        mPath.reset();
         //-----------------画线结束-------------------//
 
         //-----------------画图标,文字开始-------------------//

@@ -45,9 +45,11 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        //获取控件的宽度，这里就为设备的宽度
         if(MeasureSpec.UNSPECIFIED!=widthMode){
             width = widthSize;
         }
+        //获取右边文字的宽度
         textWidth = width- iconAndTextGap-leftGap-2*mCircleRadius-getPaddingLeft()-getPaddingRight();
 
         lineLengthList.clear();
@@ -63,7 +65,7 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
             }else{
                 unCompleteTextPaint.getTextBounds(temp, 0, temp.length(), tempRect1);
             }
-
+            //计算出大概要分几行显示文本
             int l = (int) Math.ceil(tempRect1.width()*1.0f/textWidth)+1;
 
             float max = Math.max(mLineLength, l * tempRect1.height());
@@ -87,6 +89,7 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
         }
         float startY = (height-(mCircleRadius*mInfoArrayList.size()*2+allLineLength))/2;
         float tempLineLength = 0;
+        //获取每个节点的中心点的y坐标
         for (int i = 0; i < mInfoArrayList.size(); i++) {
             if(i!=0) {
                 tempLineLength += lineLengthList.get(i-1);
@@ -105,6 +108,7 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
         for (int i = 0; i < size - 1; i++) {
             first = centerPointList.get(i);
             second = centerPointList.get(i+1);
+            //完成的画的是矩形，未完成的画的是线（实线或者虚线）
             if(i<completeingPosition) {
                 canvas.drawRect(leftTopX,first+mCircleRadius-5,rightBottomX,second-mCircleRadius+5,completedLinePaint);
             }else{
@@ -126,6 +130,7 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
             if (lInfo.getState()== Info.STEP_COMPLETED){
                 completedIcon.setBounds(rect);
                 completedIcon.draw(canvas);
+                //StaticLayout这个类用来画文字，可以换行的
                 layout = new StaticLayout(temp, completedTextPaint, (int) textWidth, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
                 canvas.save();
                 canvas.translate(startX+2*mCircleRadius+iconAndTextGap,first-mCircleRadius);
