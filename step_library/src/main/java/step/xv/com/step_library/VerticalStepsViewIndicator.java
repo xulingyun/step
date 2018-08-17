@@ -66,14 +66,12 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
             }
 
             int l = (int) Math.ceil(tempRect1.width()*1.0f/textWidth)+1;
-            Log.e("TAG", "onMeasure: -------l------"+l );
 
             float max = Math.max(mLineLength, l * tempRect1.height());
             lineLengthList.add(max);
             height+=max;
 
         }
-        Log.e("TAG", "onMeasure: "+width+","+height );
         setMeasuredDimension(width,height);
     }
 
@@ -89,7 +87,6 @@ public class VerticalStepsViewIndicator extends StepsViewIndicator{
             allLineLength+=lineLengthList.get(i);
         }
         float startY = (height-(mCircleRadius*mInfoArrayList.size()*2+allLineLength))/2;
-        Log.e("TAG", "startY:-------------- "+startY);
         float tempLineLength = 0;
         for (int i = 0; i < mInfoArrayList.size(); i++) {
             if(i!=0) {

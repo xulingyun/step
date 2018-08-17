@@ -6,11 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="wrap_content">
     <step.xv.com.step_library.VerticalStepsViewIndicator
         android:id="@+id/hsvi"
         android:background="#00BEAF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
+    </ScrollView>
 
 </RelativeLayout>
